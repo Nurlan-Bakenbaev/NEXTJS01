@@ -3,15 +3,30 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { axios } from "axios";
+import toast, { Toaster } from "react-hot-toast";
+import Loading from "@/components/Loading";
+
 const LoginPage = () => {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-  console.log(user);
-  const onLogin = async () => {};
+  const onLogin = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      toast.success("Successfully toasted!");
+    } catch (error) {
+      toast.error("Something went wrong ! ");
+    }
+  };
   return (
     <div className="flex flex-col justify-center items-center text-center w-full h-screen">
+      <Toaster position="top-right" reverseOrder={false} />
       <h1 className="text-2xl mb-3">Login</h1>
       <form className="flex flex-col gap-3">
         <input
@@ -32,7 +47,7 @@ const LoginPage = () => {
           onClick={onLogin}
           className="hover:bg-slate-700 border p-2 rounded-md text-sm"
         >
-          Signup
+          {loading ? <Loading /> : "Signup"}
         </button>
         <Link
           className=" hover:text-blue-600 text-blue-400 text-[13px] text-right"
