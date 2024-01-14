@@ -1,17 +1,29 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { axios } from "axios";
-
+import Loading from "@/components/Loading";
 const SignUpPage = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
     username: "",
   });
+  const router = useRouter();
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   console.log(user);
-  const onSignup = async () => {};
+  const onSignup = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    try {
+      setButtonDisabled(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex flex-col justify-center items-center text-center w-full h-screen">
       <h1 className="text-2xl mb-3">Signup</h1>
@@ -38,10 +50,11 @@ const SignUpPage = () => {
           type="password"
         />
         <button
+          disabled={buttonDisabled}
           onClick={onSignup}
           className="hover:bg-slate-700 border p-2 rounded-md text-sm"
         >
-          Signup
+          {buttonDisabled ? <Loading /> : "Signup"}
         </button>
         <Link
           className=" hover:text-blue-600 text-blue-400 text-[13px] text-right"
