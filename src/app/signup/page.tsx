@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { axios } from "axios";
+import axios from "axios";
 import Loading from "@/components/Loading";
+import toast, { Toaster } from "react-hot-toast";
 const SignUpPage = () => {
   const [user, setUser] = useState({
     email: "",
@@ -12,21 +13,24 @@ const SignUpPage = () => {
   });
   const router = useRouter();
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  console.log(user);
   const onSignup = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
     try {
+      const response = await axios.post("/api/users/signup", user);
       setButtonDisabled(true);
+      toast.success("Your account successfully created  ");
+      router.push("/login");
     } catch (error) {
-      console.log(error);
+      toast.error("Something went wrong ");
     }
   };
 
   return (
     <div className="flex flex-col justify-center items-center text-center w-full h-screen">
       <h1 className="text-2xl mb-3">Signup</h1>
+      <Toaster position="top-right" reverseOrder={false} />
       <form className="flex flex-col gap-3">
         <input
           className="text-black pl-3 py-2  rounded-md outline-none"
