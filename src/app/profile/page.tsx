@@ -7,7 +7,6 @@ const Profile = () => {
   const logOut = async () => {
     try {
       const response = await axios.get("/api/users/logout");
-      console.log(response);
       router.push("/login");
     } catch (error) {
       console.log(error);
