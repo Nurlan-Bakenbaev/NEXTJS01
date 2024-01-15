@@ -17,9 +17,9 @@ const SignUpPage = () => {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
+    setButtonDisabled(true);
     try {
       const response = await axios.post("/api/users/signup", user);
-      setButtonDisabled(true);
       toast.success("Your account successfully created  ");
       router.push("/login");
     } catch (error) {

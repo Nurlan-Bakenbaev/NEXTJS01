@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
     const { username, email, password } = reqBody;
-    console.log(reqBody);
+    
     //Check user
     const user = await User.findOne({ email });
     if (user) {
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     const newUser = new User({ username, email, password: hashedPassword });
     const savedUser = await newUser.save();
     return NextResponse.json(
-      { message: "New user has been created", status: "ok", savedUser },
+      { message: "New user has been created",  savedUser },
       { status: 201 }
     );
   } catch (error: any) {

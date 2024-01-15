@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { axios } from "axios";
+import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import Loading from "@/components/Loading";
 
@@ -17,11 +17,16 @@ const LoginPage = () => {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      setLoading(true);
+      const response = await axios.post("/api/users/login", user);
+      router.push("/profile");
+      console.log(response.data);
       toast.success("Successfully toasted!");
     } catch (error) {
       toast.error("Something went wrong ! ");
+    } finally {
+      setLoading(false);
     }
   };
   return (
