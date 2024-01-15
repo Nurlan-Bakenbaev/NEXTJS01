@@ -24,7 +24,7 @@ const LoginPage = () => {
       console.log(response.data);
       toast.success("Successfully toasted!");
     } catch (error) {
-      toast.error("Something went wrong ! ");
+      toast.error(" Incorrect Password or Email ");
     } finally {
       setLoading(false);
     }
