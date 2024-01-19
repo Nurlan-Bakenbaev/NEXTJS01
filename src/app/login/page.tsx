@@ -6,6 +6,7 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import Loading from "@/components/Loading";
 import GoogleAuth from "@/components/GoogleAuth";
+import Image from "next/image";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -32,9 +33,19 @@ const LoginPage = () => {
   };
   return (
     <div className=" flex flex-col justify-center items-center text-center w-full h-screen">
+      <Image
+        className="absolute filter blur-[20%] z-[-1] opacity-40 "
+        src={
+          "https://images.unsplash.com/photo-1557264337-e8a93017fe92?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+        alt="Unsplash - Photo"
+        layout="fill"
+        objectFit="cover"
+      />
       <Toaster position="top-right" reverseOrder={false} />
-      <h1 className="text-2xl mb-3">Login</h1>
-      <form className=" flex flex-col gap-3">
+
+      <form className=" flex flex-col gap-3 bg-slate-800 w-[350px]  p-8 rounded-md">
+        <h1 className="text-2xl ">Login</h1>
         <input
           className="text-black pl-3 py-2  rounded-md outline-none"
           value={user.email}
