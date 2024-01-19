@@ -5,6 +5,7 @@ import Link from "next/link";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import Loading from "@/components/Loading";
+import GoogleAuth from "@/components/GoogleAuth";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -30,10 +31,10 @@ const LoginPage = () => {
     }
   };
   return (
-    <div className="flex flex-col justify-center items-center text-center w-full h-screen">
+    <div className=" flex flex-col justify-center items-center text-center w-full h-screen">
       <Toaster position="top-right" reverseOrder={false} />
       <h1 className="text-2xl mb-3">Login</h1>
-      <form className="flex flex-col gap-3">
+      <form className=" flex flex-col gap-3">
         <input
           className="text-black pl-3 py-2  rounded-md outline-none"
           value={user.email}
@@ -61,6 +62,10 @@ const LoginPage = () => {
           Create an account?
         </Link>
       </form>
+      <div>
+        <p className="my-3 text-blue-300">or</p>
+        <GoogleAuth />
+      </div>
     </div>
   );
 };

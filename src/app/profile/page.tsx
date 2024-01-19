@@ -2,6 +2,7 @@
 import React from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import GoogleAuth from "@/components/GoogleAuth";
 const Profile = () => {
   const router = useRouter();
   const logOut = async () => {
@@ -14,9 +15,11 @@ const Profile = () => {
   };
   return (
     <div className="flex w-full h-screen justify-center items-center">
-      <button onClick={logOut} className="border border-slate-400">
-        LOGOUT
-      </button>
+      {(
+        <button onClick={logOut} className="border border-slate-400">
+          LOGOUT
+        </button>
+      ) && <GoogleAuth />}
     </div>
   );
 };
