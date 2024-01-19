@@ -2,7 +2,6 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FaGoogle } from "react-icons/fa";
-import jwt from "jsonwebtoken";
 export default function GoogleAuth() {
   const router = useRouter();
   const { data: session } = useSession();
@@ -28,7 +27,7 @@ export default function GoogleAuth() {
         </button>
       ) : (
         <div>
-          <p>Welcome, {session.user.name}!</p>
+          <p> {session.user.name}!</p>
           <button onClick={() => signOut()}>Sign out</button>
         </div>
       )}
