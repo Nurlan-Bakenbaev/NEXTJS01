@@ -5,6 +5,7 @@ import Link from "next/link";
 import axios from "axios";
 import Loading from "@/components/Loading";
 import toast, { Toaster } from "react-hot-toast";
+import Image from "next/image";
 const SignUpPage = () => {
   const [user, setUser] = useState({
     email: "",
@@ -29,9 +30,18 @@ const SignUpPage = () => {
 
   return (
     <div className="flex flex-col justify-center items-center text-center w-full h-screen">
-      <h1 className="text-2xl mb-3">Signup</h1>
       <Toaster position="top-right" reverseOrder={false} />
-      <form className="flex flex-col gap-3">
+      <Image
+        className="absolute filter blur-[20%] z-[-1] opacity-40 "
+        src={
+          "https://images.unsplash.com/photo-1557264337-e8a93017fe92?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+        alt="Unsplash - Photo"
+        layout="fill"
+        objectFit="cover"
+      />
+      <form className="flex flex-col gap-3 bg-slate-800 w-[350px]  p-8 rounded-md">
+        <h1 className="text-2xl mb-3">Signup</h1>
         <input
           className="text-black pl-3 py-2  rounded-md outline-none"
           value={user.username}
