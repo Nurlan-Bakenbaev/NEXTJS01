@@ -32,7 +32,7 @@ const LoginPage = () => {
     }
   };
   return (
-    <div className=" flex flex-col justify-center items-center text-center w-full h-screen">
+    <div className=" flex flex-row justify-center items-center text-center w-full h-screen">
       <Image
         className="absolute filter blur-[20%] z-[-1] opacity-40 "
         src={
@@ -44,7 +44,7 @@ const LoginPage = () => {
       />
       <Toaster position="top-right" reverseOrder={false} />
 
-      <form className=" flex flex-col gap-3 bg-slate-800 w-[350px]  p-8 rounded-md">
+      <div className=" flex flex-col gap-3 bg-slate-800 w-[350px]  p-8 rounded-md">
         <h1 className="text-2xl ">Login</h1>
         <input
           className="text-black pl-3 py-2  rounded-md outline-none"
@@ -72,10 +72,12 @@ const LoginPage = () => {
         >
           Create an account?
         </Link>
-      </form>
-      <div>
-        <p className="my-3 text-blue-300">or</p>
-        <GoogleAuth />
+        <div>
+          <p className="my-3 text-blue-300 text-center">or</p>
+        </div>
+        <div className="flex justify-center">
+          <GoogleAuth />
+        </div>
       </div>
     </div>
   );
